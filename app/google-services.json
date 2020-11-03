@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "780175894007",
+    "firebase_url": "https://t-commerce-3b386.firebaseio.com",
+    "project_id": "t-commerce-3b386",
+    "storage_bucket": "t-commerce-3b386.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780175894007:android:d7042303fc980109cf3af2",
+        "android_client_info": {
+          "package_name": "com.example.t_commerce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "780175894007-elgi92feclr3dv3e9obdtnllr17kig94.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.t_commerce",
+            "certificate_hash": "45298c8b1f13b69ce75385ba2b8f7b9a5b68358b"
+          }
+        },
+        {
+          "client_id": "780175894007-n7k718vf8vosps5rt6tf46pgsg7vc44e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSYlhWAE0oniTgmwn2RUJG-qfcC0xCb8c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "780175894007-n7k718vf8vosps5rt6tf46pgsg7vc44e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">T-Commerce</string>
+    <string name="introduction">An E-Commerce App to Track Fee Payments</string>
+    <string name="search">Search</string>
+</resources>
