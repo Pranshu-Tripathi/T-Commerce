@@ -63,6 +63,18 @@ public class MainActivity extends AppCompatActivity {
         item.setIndicatorColorRes(R.color.bgSplashScreen);
         item.setIndicatorIconRes(R.drawable.ic_baseline_person_24);
 
+        ExpandingItem item1 = expandingList.createNewItem(R.layout.expanding_layout);
+        ((TextView) item1.findViewById(R.id.title)).setText("Dummy2");
+
+        item1.createSubItems(1);
+
+        View subItemZero1 = item.getSubItemView(0);
+        ((TextView) subItemZero1.findViewById(R.id.sub_title)).setText("Cool");
+
+
+        item1.setIndicatorColorRes(R.color.bgSplashScreen);
+        item1.setIndicatorIconRes(R.drawable.ic_baseline_person_24);
+
 
 
 
