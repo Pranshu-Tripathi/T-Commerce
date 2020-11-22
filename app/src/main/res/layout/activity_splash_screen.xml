@@ -5,22 +5,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashScreen"
-    android:background="@color/bgSplashScreen">
+    tools:context=".activities.SplashScreen"
+    android:background="@color/charcoal">
 
-    <ImageView
-        android:id="@+id/iconSplash"
-        android:layout_width="400dp"
-        android:layout_height="400dp"
-        android:src="@drawable/cognoscentiaicon"
-        android:layout_centerInParent="true"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/iconSplash"
-        android:layout_centerHorizontal="true"
-        android:text="@string/introduction"
-        android:textColor="#000000"
-        android:textSize="16sp" />
+        <ImageView
+            android:id="@+id/logo"
+            android:alpha="1"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/classlogo"
+            android:contentDescription="TODO" />
+
+
 </RelativeLayout>

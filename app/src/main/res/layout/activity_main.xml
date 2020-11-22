@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/boldBlack"
-    tools:context=".MainActivity">
+    android:background="@color/charcoal"
+    tools:context=".activities.MainActivity">
 
     <include
         android:id="@+id/toolbar"
@@ -19,25 +19,58 @@
         android:layout_marginTop="0dp"
         android:layout_marginEnd="0dp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/ListClasses"
-        android:orientation="horizontal"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp" />
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        >
 
-    <com.diegodobelo.expandingview.ExpandingList
-        android:id="@+id/ExpandableListView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/ListClasses"
-        android:layout_alignParentStart="true"
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/avi"
+            style="@style/AVLoadingIndicatorView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/toolbarColor"
+            android:elevation="2dp"
+            android:translationZ="2dp"
+            android:visibility="invisible"
+            app:indicatorColor="#FFFFFF"
+            app:indicatorName="BallClipRotatePulseIndicator" />
+
+        <com.tomer.fadingtextview.FadingTextView
+            android:id="@+id/fading_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/avi"
+            app:timeout="1000" />
+
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addStudentFab"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:backgroundTint="@color/toolbarColor"
+        android:src="@drawable/ic_baseline_person_add_24"
+        app:borderWidth="0dp"
+        app:fabSize="normal"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp" />
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        />
+
+
+
+
 
 </RelativeLayout>
