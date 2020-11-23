@@ -15,8 +15,8 @@
             android:layout_centerInParent="true"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/_300sdp"
+            android:layout_height="@dimen/_300sdp"
             android:src="@drawable/classlogo"
             android:contentDescription="TODO" />
 

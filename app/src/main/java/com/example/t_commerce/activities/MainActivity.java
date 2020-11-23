@@ -2,21 +2,28 @@ package com.example.t_commerce.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.TextView;
 
 import com.example.t_commerce.R;
 import com.example.t_commerce.models.PaymentHistory;
 import com.example.t_commerce.models.StudentDetails;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.gson.internal.bind.DateTypeAdapter;
 import com.tomer.fadingtextview.FadingTextView;
 import com.wang.avi.AVLoadingIndicatorView;
 
@@ -41,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
 
     private AVLoadingIndicatorView avl;
     private FadingTextView fadingTextView;
+    private CardView cardView;
+    private FloatingActionButton fab;
+
     private String[] texts = {"Gathering Resources",
             "Checking All the Dates",
             "Marking the Calendar",
@@ -69,17 +79,17 @@ public class MainActivity extends AppCompatActivity {
         avl.show();
         avl.setVisibility(View.VISIBLE);
 
-        fadingTextView = findViewById(R.id.fading_text_view);
+        fadingTextView = findViewById(R.id.fadingTextView);
         fadingTextView.setVisibility(View.INVISIBLE);
         fadingTextView.setTexts(texts);
         fadingTextView.restart();
         fadingTextView.setVisibility(View.VISIBLE);
-
-        
-
+        fab = findViewById(R.id.addStudentsFab);
+        fab.setVisibility(View.INVISIBLE);
+        cardView = findViewById(R.id.cardView);
+        cardView.setVisibility(View.INVISIBLE);
 
         LoadStudents();
-
     }
 
     public void LoadStudents()
@@ -115,6 +125,14 @@ public class MainActivity extends AppCompatActivity {
                                 Long amountDue = (Long) documentSnapshot.get(KEY_AMTDUE);
                                 Long fees = (Long) documentSnapshot.get(KEY_FEES);
                                 String board = (String) documentSnapshot.get(KEY_BOARD);
+                                if(board == null)
+                                {
+                                    Log.i("NULL", "BOARD");
+                                }
+                                else
+                                {
+                                    Log.i("NOT NULL", "BOARD");
+                                }
                                 StudentDetails details = new StudentDetails(id,name,parentname,contact,whatsapp,amountDue,fees,
                                         Class,school,board,histories);
                                 Students.add(details);
@@ -122,11 +140,55 @@ public class MainActivity extends AppCompatActivity {
                                 avl.hide();
                                 fadingTextView.setVisibility(View.INVISIBLE);
                                 fadingTextView.stop();
+
+                                showLaterDesign();
                             }
                         }
                     }
                 });
     }
+
+    public void showLaterDesign()
+    {
+        fab.setVisibility(View.VISIBLE);
+        cardView.setVisibility(View.VISIBLE);
+        Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_in);
+        fab.startAnimation(animation);
+        cardView.startAnimation(animation);
+
+
+        TextView textView = findViewById(R.id.totalAmountDue);
+        TextView textView1 = findViewById(R.id.totalStudentsCount);
+        TextView textView2 = findViewById(R.id.cbseStudents);
+        TextView textView3 = findViewById(R.id.sscStudents);
+        TextView textView4 = findViewById(R.id.icseStudents);
+        TextView textView5 = findViewById(R.id.totalBatches);
+
+        textView5.setText("4");
+        int cbseCount = 0,sscCount = 0, icseCount = 0;
+        textView1.setText(String.valueOf(Students.size()));
+
+        int totalAmountDue = 0;
+        for(int i = 0 ; i < Students.size(); i++)
+        {
+            Log.i("STUDENTS",Students.get(i).getBoard());
+            if(Students.get(i).getBoard().toLowerCase().equals("cbse")) cbseCount++;
+            else if(Students.get(i).getBoard().toLowerCase().equals("ssc")) sscCount++;
+            else  if (Students.get(i).getBoard().toLowerCase().equals("icse")) icseCount++;
+
+            for(int j = 0; j < Students.get(i).getPayments().size(); j++)
+            {
+                totalAmountDue += Students.get(i).getPayments().get(j).getAmount();
+            }
+        }
+
+        textView.setText(String.valueOf(totalAmountDue));
+        textView2.setText(String.valueOf(cbseCount));
+        textView3.setText(String.valueOf(sscCount));
+        textView4.setText(String.valueOf(icseCount));
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
