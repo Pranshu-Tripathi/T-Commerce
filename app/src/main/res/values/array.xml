@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="fadingTextArray">
+        <item>Gathering Resources</item>
+        <item>Checking All the Dates</item>
+        <item>Marking The Calendar</item>
+        <item>Generating Buttons</item>
+        <item>Entering Cheat Codes</item>
+        <item>Downloading Profiles</item>
+        <item>Leaking Nuclear Codes</item>
+    </string-array>
+
+</resources>

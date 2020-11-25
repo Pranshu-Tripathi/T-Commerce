@@ -21,16 +21,17 @@
 
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_100sdp"
-        android:textAlignment="center"
-        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/_20sdp"
         android:text="Welcome!"
+        android:textAlignment="center"
         android:textAllCaps="true"
+        android:textColor="@color/white"
         android:textSize="@dimen/_24sdp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
 
     <LinearLayout
@@ -61,6 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:gravity="center"
+            app:texts="@array/fadingTextArray"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
             />
@@ -68,140 +70,147 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        app:cardCornerRadius="@dimen/_10sdp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:layout_marginEnd="@dimen/_16sdp"
+        app:cardCornerRadius="@dimen/_10sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.1">
 
         <LinearLayout
+            android:layout_width="@dimen/_270sdp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:padding="@dimen/_20sdp"
             android:background="@color/toolbarColor"
-            android:layout_width="@dimen/_300sdp"
-            android:layout_height="@dimen/_150sdp"
-            android:orientation="horizontal">
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:padding="@dimen/_10sdp">
+
             <LinearLayout
-                android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:orientation="vertical">
+
                 <TextView
-                    android:textStyle="bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Total Students: "
-                    android:textColor="@color/white"
                     android:textAlignment="center"
-                    android:textSize="@dimen/_18ssp"/>
-                <TextView
-                    android:textStyle="bold"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Total Amount Due: "
                     android:textColor="@color/white"
-                    android:textAlignment="center"
-                    android:textSize="@dimen/_18ssp"/>
+                    android:textSize="@dimen/_16ssp"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Amount Due: "
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_16ssp"
+                    android:textStyle="bold" />
+
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="CBSE Students:"
-                    android:textColor="@color/white"
                     android:textAlignment="center"
-                    android:textSize="@dimen/_18ssp"/>
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_16ssp"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:textStyle="bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="SSC Students:"
-                    android:textColor="@color/white"
                     android:textAlignment="center"
-                    android:textSize="@dimen/_18ssp"/>
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_16ssp"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:textStyle="bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="ICSE Students:"
-                    android:textColor="@color/white"
                     android:textAlignment="center"
-                    android:textSize="@dimen/_18ssp"/>
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_16ssp"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:textStyle="bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Batches:"
-                    android:textColor="@color/white"
                     android:textAlignment="center"
-                    android:textSize="@dimen/_18ssp"/>
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_16ssp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/totalStudentsCount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="100"
-                    android:textColor="@color/white"
                     android:textAlignment="center"
-                    android:textSize="@dimen/_18ssp"
-                    />
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_16ssp" />
 
                 <TextView
                     android:id="@+id/totalAmountDue"
                     android:layout_width="match_parent"
-                    android:textSize="@dimen/_18ssp"
-                    android:textColor="@color/white"
-                    android:textAlignment="center"
                     android:layout_height="wrap_content"
-                    android:text="2390"/>
+                    android:text="2390"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_16ssp" />
 
                 <TextView
                     android:id="@+id/cbseStudents"
                     android:layout_width="match_parent"
-                    android:textSize="@dimen/_18ssp"
-                    android:textColor="@color/white"
-                    android:textAlignment="center"
                     android:layout_height="wrap_content"
-                    android:text="2"/>
+                    android:text="2"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_16ssp" />
 
                 <TextView
                     android:id="@+id/sscStudents"
                     android:layout_width="match_parent"
-                    android:textSize="@dimen/_18ssp"
-                    android:textColor="@color/white"
-                    android:textAlignment="center"
                     android:layout_height="wrap_content"
-                    android:text="2390"/>
+                    android:text="2390"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_16ssp" />
 
                 <TextView
                     android:id="@+id/icseStudents"
                     android:layout_width="match_parent"
-                    android:textSize="@dimen/_18ssp"
-                    android:textColor="@color/white"
-                    android:textAlignment="center"
                     android:layout_height="wrap_content"
-                    android:text="2390"/>
+                    android:text="2390"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_16ssp" />
 
                 <TextView
                     android:id="@+id/totalBatches"
                     android:layout_width="match_parent"
-                    android:textSize="@dimen/_18ssp"
-                    android:textColor="@color/white"
-                    android:textAlignment="center"
                     android:layout_height="wrap_content"
-                    android:text="2390"/>
+                    android:text="2390"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_16ssp" />
 
 
             </LinearLayout>
@@ -220,6 +229,35 @@
         android:backgroundTint="@color/toolbarColor"
         android:src="@drawable/ic_baseline_person_add_24"
         />
+
+    <LinearLayout
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="@dimen/_30sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/studentDiary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Student"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_btn_main_scrren"
+            />
+
+        <Button
+            android:layout_marginTop="@dimen/_10sdp"
+            android:id="@+id/TimeTable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TimeTable"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_btn_main_scrren"/>
+
+    </LinearLayout>
 
 
 

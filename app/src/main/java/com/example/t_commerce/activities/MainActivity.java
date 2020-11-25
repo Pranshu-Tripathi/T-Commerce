@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.t_commerce.R;
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     private FadingTextView fadingTextView;
     private CardView cardView;
     private FloatingActionButton fab;
+    private Button studentDiary, timeTable;
 
     private String[] texts = {"Gathering Resources",
             "Checking All the Dates",
@@ -88,6 +90,13 @@ public class MainActivity extends AppCompatActivity {
         fab.setVisibility(View.INVISIBLE);
         cardView = findViewById(R.id.cardView);
         cardView.setVisibility(View.INVISIBLE);
+
+        studentDiary = findViewById(R.id.studentDiary);
+        timeTable = findViewById(R.id.TimeTable);
+
+        studentDiary.setVisibility(View.INVISIBLE);
+        timeTable.setVisibility(View.INVISIBLE);
+
 
         LoadStudents();
     }
@@ -152,10 +161,13 @@ public class MainActivity extends AppCompatActivity {
     {
         fab.setVisibility(View.VISIBLE);
         cardView.setVisibility(View.VISIBLE);
+        studentDiary.setVisibility(View.VISIBLE);
+        timeTable.setVisibility(View.VISIBLE);
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_in);
         fab.startAnimation(animation);
         cardView.startAnimation(animation);
-
+        studentDiary.startAnimation(animation);
+        timeTable.startAnimation(animation);
 
         TextView textView = findViewById(R.id.totalAmountDue);
         TextView textView1 = findViewById(R.id.totalStudentsCount);
