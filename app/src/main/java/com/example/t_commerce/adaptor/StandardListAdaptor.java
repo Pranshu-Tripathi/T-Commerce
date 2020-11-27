@@ -90,14 +90,14 @@ public class StandardListAdaptor extends RecyclerView.Adapter<StandardListAdapto
     }
 
 
-    public int getStandardSelected(){
+    public Long getStandardSelected(){
 
-        int standardSelected = -4;
+        Long standardSelected = (long) -4;
         for(int i = 0 ; i < this.standards.size(); i++)
         {
             if(this.standards.get(i).isSelected())
             {
-                standardSelected = i - 1;
+                standardSelected = (long) i - 1;
             }
         }
         return standardSelected;

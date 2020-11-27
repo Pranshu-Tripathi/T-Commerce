@@ -43,12 +43,19 @@ public class StudentListAdaptor extends RecyclerView.Adapter<StudentListAdaptor.
         Long standard = studentDetails.get(position).getSClass();
         String name = studentDetails.get(position).getName();
         String school = studentDetails.get(position).getSchool();
+
         final String whatsAppNumber = studentDetails.get(position).getWhatsAppNumber();
         final String contactNumber = studentDetails.get(position).getMobileContact();
 
         holder.standardText.setText(String.valueOf(standard));
         holder.nameText.setText(name);
         holder.schoolText.setText(school);
+
+        if(school.length() > 18)
+        {
+            String schoolConcatenated = school.substring(0,14);
+            holder.schoolText.setText(schoolConcatenated + " ...");
+        }
 
         holder.whatsAppBtn.setOnClickListener(new View.OnClickListener() {
             @Override

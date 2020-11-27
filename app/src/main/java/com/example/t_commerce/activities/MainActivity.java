@@ -3,6 +3,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
     private CardView cardView;
     private FloatingActionButton fab;
     private Button studentDiary, timeTable;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     private String[] texts = {"Gathering Resources",
             "Checking All the Dates",
@@ -65,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
     private FirebaseFirestore db;
 
-    public static final ArrayList<StudentDetails> Students = new ArrayList<>();
+    public static ArrayList<StudentDetails> Students = new ArrayList<>();
 
 
 
@@ -92,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setVisibility(View.INVISIBLE);
         cardView = findViewById(R.id.cardView);
         cardView.setVisibility(View.INVISIBLE);
+        swipeRefreshLayout = findViewById(R.id.swipeRefreshMain);
 
         studentDiary = findViewById(R.id.studentDiary);
         timeTable = findViewById(R.id.TimeTable);
@@ -106,6 +109,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 studentButton();
+            }
+        });
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                    Students.clear();
+                    studentDiary.setVisibility(View.INVISIBLE);
+                    timeTable.setVisibility(View.INVISIBLE);
+                    fab.setVisibility(View.INVISIBLE);
+                    avl.show();
+                    avl.setVisibility(View.VISIBLE);
+                    cardView.setVisibility(View.INVISIBLE);
+                    LoadStudents();
+                    swipeRefreshLayout.setRefreshing(false);
+
             }
         });
 
@@ -209,7 +229,7 @@ public class MainActivity extends AppCompatActivity {
             Log.i("STUDENTS",Students.get(i).getBoard());
             if(Students.get(i).getBoard().toLowerCase().equals("cbse")) cbseCount++;
             else if(Students.get(i).getBoard().toLowerCase().equals("ssc")) sscCount++;
-            else  if (Students.get(i).getBoard().toLowerCase().equals("icse")) icseCount++;
+            else  if (Students.get(i).getBoard().toLowerCase().equals("icsc")) icseCount++;
 
             for(int j = 0; j < Students.get(i).getPayments().size(); j++)
             {

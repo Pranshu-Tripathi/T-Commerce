@@ -18,7 +18,7 @@
 
         <LinearLayout
             android:id="@+id/grpList"
-            android:padding="@dimen/_10sdp"
+            android:padding="@dimen/_5sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -26,7 +26,7 @@
             <TextView
                 android:id="@+id/standardStudent"
                 android:layout_width="@dimen/_40sdp"
-                android:layout_height="@dimen/_40sdp"
+                android:layout_height="match_parent"
                 android:text="7"
                 android:backgroundTint="@color/golden"
                 android:background="@drawable/bg_standard"
@@ -50,12 +50,12 @@
                     android:paddingStart="1dp"
                     android:paddingEnd="1dp"
                     android:layout_gravity="center"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/_125sdp"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
                     <TextView
-                        android:textSize="@dimen/_18ssp"
+                        android:textSize="@dimen/_16ssp"
                         android:gravity="center"
                         android:id="@+id/studentName"
                         android:layout_weight="1"
@@ -72,6 +72,7 @@
                         android:textColor="@color/silver"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:maxLength="18"
                         android:text="Nashik Cambridge School"
                         android:textStyle="italic"/>
                 </LinearLayout>
@@ -91,7 +92,7 @@
                         android:src="@drawable/whatsapplogogreen"/>
 
                     <ImageButton
-
+                        android:layout_gravity="center"
                         android:id="@+id/studentContact"
                         android:layout_marginEnd="@dimen/_4sdp"
                         android:background="@color/charcoal"
