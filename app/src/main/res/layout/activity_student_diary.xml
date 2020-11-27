@@ -135,20 +135,20 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-
+            android:id="@+id/groupStudentList"
             app:cardCornerRadius="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_40sdp"
             android:layout_marginStart="@dimen/_6sdp"
             android:layout_marginEnd="@dimen/_6sdp"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_300sdp"
+            android:layout_height="@dimen/_600sdp"
             app:layout_constraintBottom_toBottomOf="@+id/parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/groupStandardList" >
 
             <LinearLayout
-                android:padding="@dimen/_10sdp"
+                android:padding="@dimen/_5sdp"
                 android:background="@color/toolbarColor"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -159,6 +159,19 @@
                     android:layout_height="match_parent"
                     />
             </LinearLayout>
+
+            <com.wang.avi.AVLoadingIndicatorView
+                android:id="@+id/aviStudentList"
+                style="@style/AVLoadingIndicatorView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/toolbarColor"
+                android:elevation="2dp"
+                android:translationZ="2dp"
+                android:visibility="invisible"
+                app:indicatorColor="#FFFFFF"
+                app:indicatorName="PacmanIndicator"/>
 
         </androidx.cardview.widget.CardView>
 

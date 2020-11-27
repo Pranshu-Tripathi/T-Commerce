@@ -14,19 +14,25 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 
 import com.example.t_commerce.R;
 import com.example.t_commerce.adaptor.StandardListAdaptor;
+import com.example.t_commerce.adaptor.StudentListAdaptor;
 import com.example.t_commerce.models.StandardListModel;
 import com.example.t_commerce.models.StudentDetails;
 import com.google.android.material.switchmaterial.SwitchMaterial;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
 
 public class StudentDiaryActivity extends AppCompatActivity {
 
-    private CardView cardView;
-    private RecyclerView recyclerView;
+    private CardView cardViewStandardGroup;
+    private CardView cardViewStudentListGroup;
+    private RecyclerView recyclerViewStandard;
+    private RecyclerView recyclerViewStudents;
+    private AVLoadingIndicatorView swipeLoader;
     private ArrayList<StandardListModel> Standards;
     private ArrayList<StudentDetails> details;
     private SwitchMaterial cbseSwitch, icseSwitch, sscSwitch;
@@ -42,9 +48,14 @@ public class StudentDiaryActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Student Diary");
 
-        cardView = findViewById(R.id.groupStandardList);
-        cardView.setVisibility(View.INVISIBLE);
-        recyclerView = findViewById(R.id.standardRecyclerView);
+        swipeLoader = findViewById(R.id.aviStudentList);
+        swipeLoader.hide();
+        cardViewStandardGroup = findViewById(R.id.groupStandardList);
+        cardViewStandardGroup.setVisibility(View.INVISIBLE);
+        cardViewStudentListGroup = findViewById(R.id.groupStudentList);
+        cardViewStudentListGroup.setVisibility(View.INVISIBLE);
+        recyclerViewStandard = findViewById(R.id.standardRecyclerView);
+        recyclerViewStudents = findViewById(R.id.listStudentRecyclerView);
         cbseSwitch = findViewById(R.id.cbseFilterSwitch);
         icseSwitch = findViewById(R.id.icseFilterSwitch);
         sscSwitch = findViewById(R.id.sscFilterSwitch);
@@ -57,14 +68,16 @@ public class StudentDiaryActivity extends AppCompatActivity {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        recyclerView.setLayoutManager(linearLayoutManager);
-
+        recyclerViewStandard.setLayoutManager(linearLayoutManager);
         StandardListAdaptor adaptor = new StandardListAdaptor(this,Standards);
-
-        recyclerView.setAdapter(adaptor);
-
+        recyclerViewStandard.setAdapter(adaptor);
         adaptor.notifyDataSetChanged();
 
+        LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(this);
+        linearLayoutManager1.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerViewStudents.setLayoutManager(linearLayoutManager1);
+
+        studentListCreation();
 
         loadAnimations();
 
@@ -112,9 +125,11 @@ public class StudentDiaryActivity extends AppCompatActivity {
 
     public void loadAnimations()
     {
-        cardView.setVisibility(View.VISIBLE);
+        cardViewStandardGroup.setVisibility(View.VISIBLE);
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_in);
-        cardView.startAnimation(animation);
+        cardViewStandardGroup.startAnimation(animation);
+        cardViewStudentListGroup.setVisibility(View.VISIBLE);
+        cardViewStudentListGroup.startAnimation(animation);
     }
 
     public void loadStandardData()
@@ -131,6 +146,13 @@ public class StudentDiaryActivity extends AppCompatActivity {
             Standards.add(s);
         }
 
+    }
+
+    public void studentListCreation()
+    {
+        StudentListAdaptor studentListAdaptor = new StudentListAdaptor(this,details);
+        recyclerViewStudents.setAdapter(studentListAdaptor);
+        studentListAdaptor.notifyDataSetChanged();
     }
 
 }
