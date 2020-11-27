@@ -13,11 +13,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.CompoundButton;
 
 import com.example.t_commerce.R;
 import com.example.t_commerce.adaptor.StandardListAdaptor;
 import com.example.t_commerce.models.StandardListModel;
 import com.example.t_commerce.models.StudentDetails;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 
 import java.util.ArrayList;
 
@@ -27,6 +29,8 @@ public class StudentDiaryActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ArrayList<StandardListModel> Standards;
     private ArrayList<StudentDetails> details;
+    private SwitchMaterial cbseSwitch, icseSwitch, sscSwitch;
+
     public static int previousSelected = -1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +45,12 @@ public class StudentDiaryActivity extends AppCompatActivity {
         cardView = findViewById(R.id.groupStandardList);
         cardView.setVisibility(View.INVISIBLE);
         recyclerView = findViewById(R.id.standardRecyclerView);
+        cbseSwitch = findViewById(R.id.cbseFilterSwitch);
+        icseSwitch = findViewById(R.id.icseFilterSwitch);
+        sscSwitch = findViewById(R.id.sscFilterSwitch);
+
         details = MainActivity.Students;
-        Log.i("copied Details",details.get(0).getId());
+
 
 
         loadStandardData();
@@ -64,6 +72,42 @@ public class StudentDiaryActivity extends AppCompatActivity {
 
 
 
+        cbseSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    icseSwitch.setChecked(false);
+                    sscSwitch.setChecked(false);
+
+                }
+            }
+        });
+
+
+        icseSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    cbseSwitch.setChecked(false);
+                    sscSwitch.setChecked(false);
+                }
+            }
+        });
+
+
+        sscSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    cbseSwitch.setChecked(false);
+                    icseSwitch.setChecked(false);
+                }
+            }
+        });
+
     }
 
     public void loadAnimations()
@@ -79,7 +123,11 @@ public class StudentDiaryActivity extends AppCompatActivity {
 
         for(int i = -1 ; i <= 10 ; i++)
         {
-            StandardListModel s = new StandardListModel( i,false);
+            StandardListModel s;
+            if(i == -1)
+                s = new StandardListModel(i,true);
+            else
+                s = new StandardListModel(i,false);
             Standards.add(s);
         }
 

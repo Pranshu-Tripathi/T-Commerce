@@ -89,6 +89,20 @@ public class StandardListAdaptor extends RecyclerView.Adapter<StandardListAdapto
         notifyDataSetChanged();
     }
 
+
+    public int getStandardSelected(){
+
+        int standardSelected = -4;
+        for(int i = 0 ; i < this.standards.size(); i++)
+        {
+            if(this.standards.get(i).isSelected())
+            {
+                standardSelected = i - 1;
+            }
+        }
+        return standardSelected;
+    }
+
     static class MyViewHolder extends RecyclerView.ViewHolder{
 
         TextView StandardText;

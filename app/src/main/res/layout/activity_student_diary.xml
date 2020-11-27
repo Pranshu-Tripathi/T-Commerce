@@ -8,6 +8,7 @@
     tools:context=".activities.StudentDiaryActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -24,7 +25,7 @@
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_6sdp"
             android:layout_marginStart="@dimen/_6sdp"
-            android:layout_height="@dimen/_100sdp"
+            android:layout_height="wrap_content"
             app:cardCornerRadius="@dimen/_10sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,6 +45,119 @@
                     android:orientation="horizontal" />
 
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/_10sdp">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:layout_weight="0.1"
+                            android:id="@+id/cbseFilterSwitch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            tools:ignore="NestedWeights" />
+
+                        <TextView
+                            android:gravity="center"
+                            android:textAlignment="textStart"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="CBSE"
+                            android:textColor="@color/boldBlack"
+                            android:textStyle="bold"
+                            tools:ignore="RtlCompat" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:layout_weight="0.1"
+                            android:id="@+id/icseFilterSwitch"
+                            android:layout_width="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_height="match_parent"
+                            tools:ignore="NestedWeights" />
+
+                        <TextView
+                            android:gravity="center"
+                            android:textAlignment="textStart"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="ICSC"
+                            android:textColor="@color/boldBlack"
+                            android:textStyle="bold"
+                            tools:ignore="RtlCompat" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:layout_weight="0.1"
+                            android:id="@+id/sscFilterSwitch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            tools:ignore="NestedWeights" />
+
+                        <TextView
+                            android:gravity="center"
+                            android:textAlignment="textStart"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="SSC"
+                            android:textColor="@color/boldBlack"
+                            android:textStyle="bold"
+                            tools:ignore="RtlCompat" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+
+            app:cardCornerRadius="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:layout_marginStart="@dimen/_6sdp"
+            android:layout_marginEnd="@dimen/_6sdp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_300sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/groupStandardList" >
+
+            <LinearLayout
+                android:padding="@dimen/_10sdp"
+                android:background="@color/toolbarColor"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/listStudentRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>

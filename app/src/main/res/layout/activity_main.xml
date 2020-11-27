@@ -246,7 +246,7 @@
             android:text="Student"
             android:textColor="@color/white"
             android:background="@drawable/bg_btn_main_scrren"
-            />
+            android:elevation="6dp" />
 
         <Button
             android:layout_marginTop="@dimen/_10sdp"
@@ -255,7 +255,8 @@
             android:layout_height="wrap_content"
             android:text="TimeTable"
             android:textColor="@color/white"
-            android:background="@drawable/bg_btn_main_scrren"/>
+            android:background="@drawable/bg_btn_main_scrren"
+            android:elevation="6dp"/>
 
     </LinearLayout>
 

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -14,6 +15,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.t_commerce.R;
 import com.example.t_commerce.models.PaymentHistory;
@@ -99,6 +101,27 @@ public class MainActivity extends AppCompatActivity {
 
 
         LoadStudents();
+
+        studentDiary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                studentButton();
+            }
+        });
+
+        timeTable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               timeTableButton();
+            }
+        });
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fabButton();
+            }
+        });
     }
 
     public void LoadStudents()
@@ -200,7 +223,30 @@ public class MainActivity extends AppCompatActivity {
         textView4.setText(String.valueOf(icseCount));
     }
 
+    public void studentButton()
+    {
+        Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.bounce);
+        studentDiary.startAnimation(animation);
+        Log.i("Student button","Pressed");
 
+        Intent intent = new Intent(MainActivity.this,StudentDiaryActivity.class);
+
+        startActivity(intent);
+    }
+
+    public void timeTableButton()
+    {
+        Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.bounce);
+        timeTable.startAnimation(animation);
+        Toast.makeText(this, "TimeTable", Toast.LENGTH_SHORT).show();
+    }
+
+    public void fabButton()
+    {
+        Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.bouncefab);
+        fab.startAnimation(animation);
+        Toast.makeText(this, "F.A.B", Toast.LENGTH_SHORT).show();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -27,11 +27,11 @@ public class SplashScreen extends AppCompatActivity {
         t1.schedule(new TimerTask() {
             @Override
             public void run() {
-                Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_out);
+                Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.blick);
                 imageView.setAnimation(animation);
                 imageView.startAnimation(animation);
             }
-        },2000);
+        },1000);
 
 
 
@@ -43,6 +43,6 @@ public class SplashScreen extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        },3000);
+        },5000);
     }
 }
