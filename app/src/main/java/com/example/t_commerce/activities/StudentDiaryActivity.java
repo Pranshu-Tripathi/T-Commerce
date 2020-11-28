@@ -26,6 +26,7 @@ import com.example.t_commerce.models.StudentDetails;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.switchmaterial.SwitchMaterial;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -213,7 +214,9 @@ public class StudentDiaryActivity extends AppCompatActivity {
                                 for(HashMap<String,Object> element : k)
                                 {
                                     Long Amount = (Long) element.get("Amount");
-                                    Date date = (Date) element.get("Date");
+                                    Timestamp timestamp = (Timestamp) element.get("Date");
+                                    assert timestamp != null;
+                                    Date date = timestamp.toDate();
                                     String Mode = (String) element.get("Mode");
                                     PaymentHistory p = new PaymentHistory(date,Amount,Mode);
                                     histories.add(p);

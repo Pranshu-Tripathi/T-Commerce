@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/charcoal"
+    tools:context=".activities.AddStudentActivity">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addStudentRequestFab"
+        android:backgroundTint="@color/golden"
+        android:src="@drawable/ic_baseline_add_24"
+        app:maxImageSize="@dimen/_40sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include" >
+
+        <LinearLayout
+            android:id="@+id/groupStudentDetails"
+            android:padding="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/parentLinearLayout"
+                android:background="@drawable/bg_student_addition"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/_5sdp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/topGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_110sdp"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="@dimen/_100sdp"
+                        android:src="@drawable/ic_baseline_person_24"
+                        android:background="@drawable/bg_standard"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <LinearLayout
+                                android:padding="@dimen/_5sdp"
+                                android:layout_centerInParent="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <ImageButton
+                                        android:id="@+id/decrementStandard"
+                                        android:layout_gravity="start"
+                                        android:layout_width="@dimen/_20sdp"
+                                        android:layout_height="@dimen/_20sdp"
+                                        android:src="@drawable/ic_baseline_keyboard_arrow_left_24"
+                                        android:background="@drawable/bg_add_btn"/>
+
+                                    <TextView
+                                        android:textAlignment="center"
+                                        android:gravity="center"
+                                        android:textSize="@dimen/_16ssp"
+                                        android:id="@+id/StandardTextView"
+                                        android:layout_width="@dimen/_70sdp"
+                                        android:layout_height="wrap_content"
+                                        android:text="Class"
+                                        android:layout_gravity="center"
+                                        android:layout_marginStart="@dimen/_2sdp"
+                                        android:textColor="@color/white"/>
+
+                                    <ImageButton
+                                        android:id="@+id/incrementStandard"
+                                        android:layout_gravity="end"
+                                        android:layout_marginStart="@dimen/_2sdp"
+                                        android:layout_width="@dimen/_20sdp"
+                                        android:layout_height="@dimen/_20sdp"
+                                        android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+                                        android:background="@drawable/bg_add_btn"/>
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <ImageButton
+                                        android:layout_weight="1"
+                                        android:id="@+id/decrementBoard"
+                                        android:layout_gravity="start"
+                                        android:layout_width="@dimen/_20sdp"
+                                        android:layout_height="@dimen/_20sdp"
+                                        android:src="@drawable/ic_baseline_keyboard_arrow_left_24"
+                                        android:background="@drawable/bg_add_btn"/>
+
+                                    <TextView
+                                        android:textAlignment="center"
+                                        android:gravity="center"
+                                        android:layout_weight="1"
+                                        android:id="@+id/BoardTextView"
+                                        android:layout_width="@dimen/_70sdp"
+                                        android:layout_height="wrap_content"
+                                        android:text="Board"
+                                        android:textSize="@dimen/_16ssp"
+                                        android:layout_gravity="center"
+                                        android:layout_marginStart="@dimen/_2sdp"
+                                        android:textColor="@color/white"/>
+
+                                    <ImageButton
+                                        android:layout_weight="1"
+                                        android:id="@+id/incrementBoard"
+                                        android:layout_gravity="end"
+                                        android:layout_marginStart="@dimen/_2sdp"
+                                        android:layout_width="@dimen/_20sdp"
+                                        android:layout_height="@dimen/_20sdp"
+                                        android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+                                        android:background="@drawable/bg_add_btn"/>
+
+                                </LinearLayout>
+
+                                <com.wang.avi.AVLoadingIndicatorView
+                                    android:layout_marginTop="@dimen/_4sdp"
+                                    android:id="@+id/aviRequestAddition"
+                                    style="@style/AVLoadingIndicatorView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:backgroundTint="@color/toolbarColor"
+                                    android:elevation="2dp"
+                                    android:translationZ="2dp"
+                                    android:visibility="invisible"
+                                    app:indicatorColor="#FFFFFF"
+                                    app:indicatorName="BallTrianglePathIndicator"
+                                    />
+
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:padding="@dimen/_2sdp"
+                    android:hint="Name"
+                    android:background="@drawable/bg_input_layout"
+                    android:id="@+id/textInputLayoutNameStudent"
+                    android:layout_width="match_parent"
+                    app:counterEnabled="true"
+                    app:errorEnabled="true"
+                    app:counterMaxLength="20"
+                    android:layout_height="wrap_content"
+                    tools:ignore="HardcodedText">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:padding="@dimen/_2sdp"
+                    android:hint="School"
+                    android:background="@drawable/bg_input_layout"
+                    android:id="@+id/textInputLayoutSchoolStudent"
+                    android:layout_width="match_parent"
+                    app:counterEnabled="true"
+                    app:errorEnabled="true"
+                    app:counterMaxLength="18"
+                    android:layout_height="wrap_content"
+                    tools:ignore="HardcodedText">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:padding="@dimen/_2sdp"
+                    android:hint="Parent"
+                    android:background="@drawable/bg_input_layout"
+                    android:id="@+id/textInputLayoutParentStudent"
+                    android:layout_width="match_parent"
+                    app:counterEnabled="true"
+                    app:errorEnabled="true"
+                    app:counterMaxLength="20"
+                    android:layout_height="wrap_content"
+                    tools:ignore="HardcodedText">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:padding="@dimen/_2sdp"
+                    android:hint="WhatsApp"
+                    android:background="@drawable/bg_input_layout"
+                    android:id="@+id/textInputLayoutWhatsApp"
+                    android:layout_width="match_parent"
+                    app:counterEnabled="true"
+                    app:errorEnabled="true"
+                    app:counterMaxLength="10"
+                    android:layout_height="wrap_content"
+                    tools:ignore="HardcodedText">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:inputType="phone"
+                        android:singleLine="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:padding="@dimen/_2sdp"
+                    android:hint="Contact (optional)"
+                    android:background="@drawable/bg_input_layout"
+                    android:id="@+id/textInputLayoutContactStudent"
+                    android:layout_width="match_parent"
+                    app:counterEnabled="true"
+                    app:errorEnabled="true"
+                    app:counterMaxLength="10"
+                    android:layout_height="wrap_content"
+                    tools:ignore="HardcodedText">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:inputType="phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_marginBottom="@dimen/_40sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:padding="@dimen/_2sdp"
+                    android:hint="Fees"
+                    android:background="@drawable/bg_input_layout"
+                    android:id="@+id/textInputLayoutFeesStudent"
+                    android:layout_width="match_parent"
+                    app:counterEnabled="true"
+                    app:errorEnabled="true"
+                    app:counterMaxLength="20"
+                    android:layout_height="wrap_content"
+                    tools:ignore="HardcodedText">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:inputType="number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

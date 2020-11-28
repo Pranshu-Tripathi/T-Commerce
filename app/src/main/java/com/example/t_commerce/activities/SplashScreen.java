@@ -4,12 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.example.t_commerce.R;
+import com.google.firebase.Timestamp;
 
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -22,18 +25,13 @@ public class SplashScreen extends AppCompatActivity {
 
         final ImageView imageView = findViewById(R.id.logo);
 
-
-        Timer t1 = new Timer();
-        t1.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.blick);
-                imageView.setAnimation(animation);
-                imageView.startAnimation(animation);
-            }
-        },1000);
+        Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.bounce_image_splash);
+        imageView.setAnimation(animation);
+        imageView.startAnimation(animation);
 
 
+        Date d = new Date();
+        Log.i("Date", String.valueOf(d.getDate()));
 
         Timer t2= new Timer();
         t2.schedule(new TimerTask() {

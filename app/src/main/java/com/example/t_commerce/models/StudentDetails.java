@@ -17,7 +17,7 @@ public class StudentDetails {
     Long SClass;
     String School;
     String board;
-    ArrayList<PaymentHistory> Payments;
+    ArrayList<PaymentHistory> Payments = new ArrayList<>();
 
     public StudentDetails(String id, String name, String parent, String mobileContact, String WhatsAppNumber, Long amountDue, Long fees,
                           Long Class, String School, String board,ArrayList<PaymentHistory> P)
