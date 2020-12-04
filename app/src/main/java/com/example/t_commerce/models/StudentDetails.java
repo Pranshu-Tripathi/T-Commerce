@@ -2,9 +2,10 @@ package com.example.t_commerce.models;
 
 import com.example.t_commerce.models.PaymentHistory;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class StudentDetails {
+public class StudentDetails implements Serializable {
 
     String id;
 

@@ -3,6 +3,7 @@ package com.example.t_commerce.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -69,6 +70,12 @@ public class AddStudentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_student);
+
+        Toolbar mTool = (Toolbar) findViewById(R.id.toolbarAddStudent);
+        setSupportActionBar(mTool);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Add Student");
+
 
         final Animation bounce = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.bouncefab);
 

@@ -8,7 +8,7 @@
     tools:context=".activities.AddStudentActivity">
 
     <include
-        android:id="@+id/include"
+        android:id="@+id/toolbarAddStudent"
         layout="@layout/toolbar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include" >
+        app:layout_constraintTop_toBottomOf="@+id/toolbarAddStudent" >
 
         <LinearLayout
             android:id="@+id/groupStudentDetails"

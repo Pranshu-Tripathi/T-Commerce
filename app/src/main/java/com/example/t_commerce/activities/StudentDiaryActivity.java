@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -16,6 +17,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.t_commerce.R;
@@ -26,6 +28,7 @@ import com.example.t_commerce.models.StandardListModel;
 import com.example.t_commerce.models.StudentDetails;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -45,12 +48,14 @@ public class StudentDiaryActivity extends AppCompatActivity {
     private RecyclerView recyclerViewStudents;
     private AVLoadingIndicatorView swipeLoader;
     private ArrayList<StandardListModel> Standards;
-    private ArrayList<StudentDetails> details;
+    private ArrayList<StudentDetails> details,filteredList;
     private SwitchMaterial cbseSwitch, icseSwitch, sscSwitch;
     private SwipeRefreshLayout swipeRefreshLayout;
     private StandardListAdaptor adaptor;
     private StudentListAdaptor studentListAdaptor;
-
+    private BottomSheetDialog bottomSheetDialog;
+    private CardView makePayment,updateProfile,profile,deleteProfile;
+    private TextView studentNameSelected;
     FirebaseFirestore db;
 
     String KEY_NAME = "name";
@@ -90,7 +95,10 @@ public class StudentDiaryActivity extends AppCompatActivity {
         icseSwitch = findViewById(R.id.icseFilterSwitch);
         sscSwitch = findViewById(R.id.sscFilterSwitch);
 
+        bottomSheetDialog = new BottomSheetDialog(StudentDiaryActivity.this);
+
         details = MainActivity.Students;
+        filteredList = MainActivity.Students;
         loadStandardData();
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -104,7 +112,9 @@ public class StudentDiaryActivity extends AppCompatActivity {
         linearLayoutManager1.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerViewStudents.setLayoutManager(linearLayoutManager1);
 
-        studentListCreation(details);
+        studentListAdaptor = new StudentListAdaptor(this,filteredList);
+        recyclerViewStudents.setAdapter(studentListAdaptor);
+        studentListAdaptor.notifyDataSetChanged();
 
         loadAnimations();
 
@@ -158,7 +168,7 @@ public class StudentDiaryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int position = recyclerViewStudents.getChildAdapterPosition(v);
-                Toast.makeText(StudentDiaryActivity.this, String.valueOf(position), Toast.LENGTH_SHORT).show();
+                showOptions(position);
             }
         });
 
@@ -189,12 +199,59 @@ public class StudentDiaryActivity extends AppCompatActivity {
 
     }
 
-    public void studentListCreation(ArrayList<StudentDetails> detail)
+
+    public void showOptions(int position)
     {
-        studentListAdaptor = new StudentListAdaptor(this,detail);
-        recyclerViewStudents.setAdapter(studentListAdaptor);
-        studentListAdaptor.notifyDataSetChanged();
+
+        View view = getLayoutInflater().inflate(R.layout.layout_bottom_sheet_dialog,null);
+        studentNameSelected = view.findViewById(R.id.studentNameSel);
+        makePayment = view.findViewById(R.id.makePayment);
+        updateProfile = view.findViewById(R.id.updateProfile);
+        profile = view.findViewById(R.id.profile);
+        deleteProfile = view.findViewById(R.id.deleteProfile);
+
+        final StudentDetails selectedStudent = studentListAdaptor.getItemAt(position);
+
+        makePayment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(StudentDiaryActivity.this,PaymentActivity.class);
+                intent.putExtra("selectedStudent",selectedStudent.getId());
+                startActivity(intent);
+            }
+        });
+
+        updateProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        deleteProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        if(position != -1)
+        {
+            studentNameSelected.setText(selectedStudent.getName());
+        }
+
+        bottomSheetDialog.setContentView(view);
+        bottomSheetDialog.show();
+
     }
+
 
 
     public void RenderScreen()
@@ -253,7 +310,7 @@ public class StudentDiaryActivity extends AppCompatActivity {
     public void filteredList()
     {
         swipeLoader.hide();
-        ArrayList<StudentDetails> filteredList = new ArrayList<>();
+        filteredList = new ArrayList<>();
         ArrayList<StudentDetails> NoBoardFilterList = new ArrayList<>();
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_in);
         cardViewStudentListGroup.setVisibility(View.VISIBLE);
@@ -266,9 +323,6 @@ public class StudentDiaryActivity extends AppCompatActivity {
         if(stdSelected == -1)
         {
             NoBoardFilterList.addAll(details);
-
-
-            Log.i("Seleceted","true");
             if(x == 0)
                 filteredList.addAll(NoBoardFilterList);
             else if(x == 1)
@@ -334,7 +388,7 @@ public class StudentDiaryActivity extends AppCompatActivity {
 
         }
 
-        studentListCreation(filteredList);
+        studentListAdaptor.updateList(filteredList);
 
     }
 

@@ -63,6 +63,7 @@
                 app:indicatorName="BallClipRotatePulseIndicator" />
 
             <com.tomer.fadingtextview.FadingTextView
+                app:timeout="500"
                 android:id="@+id/fadingTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

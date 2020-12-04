@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.PaymentActivity"
+    android:background="@color/charcoal">
+
+    <include
+        android:id="@+id/toolbarPayment"
+        layout="@layout/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_6sdp"
+        android:layout_marginEnd="@dimen/_6sdp"
+        app:cardCornerRadius="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarPayment">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/toolbarColor"
+            android:orientation="vertical"
+            android:padding="@dimen/_10sdp">
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/amountTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_input_layout"
+                android:hint="Amount"
+                app:counterEnabled="true"
+                app:counterMaxLength="4"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+                <ImageButton
+
+                    android:id="@+id/datePickerBtn"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:background="?android:selectableItemBackground"
+                    android:src="@drawable/ic_baseline_calendar_today_24"
+                    android:tint="@color/boldBlack" />
+
+                <TextView
+                    android:id="@+id/displayDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:text="@string/date"
+                    android:textColor="@color/boldBlack"
+                    android:textSize="@dimen/_16ssp"
+                    tools:ignore="RtlSymmetry" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/timePickerBtn"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:background="?android:selectableItemBackground"
+                    android:src="@drawable/ic_baseline_access_time_24"
+                    android:tint="@color/boldBlack" />
+
+                <TextView
+                    android:id="@+id/displayTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:text="@string/time"
+                    android:textColor="@color/boldBlack"
+                    android:textSize="@dimen/_16ssp"
+                    tools:ignore="RtlSymmetry" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/modeToggle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textOff="Offline"
+                    android:textOn="Online"
+                    tools:ignore="HardcodedText" >
+                </com.google.android.material.switchmaterial.SwitchMaterial>
+
+                <TextView
+                    android:id="@+id/displayMode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Offline"
+                    android:textColor="@color/boldBlack"
+                    android:paddingLeft="@dimen/_10sdp"
+                    android:textSize="@dimen/_16ssp"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <Button
+        android:id="@+id/makePaymentRequestBtn"
+        android:layout_marginBottom="@dimen/_30sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_add_btn"
+        android:text="Make Payment"
+        android:textSize="@dimen/_20ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:layout_marginBottom="@dimen/_50sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/cardViewDetails"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/aviRequestPayment"
+            style="@style/AVLoadingIndicatorView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/toolbarColor"
+            android:elevation="2dp"
+            android:translationZ="2dp"
+            android:visibility="invisible"
+            app:indicatorColor="#FFFFFF"
+            app:indicatorName="BallRotateIndicator"/>
+
+        <com.tomer.fadingtextview.FadingTextView
+            android:id="@+id/fadingTextViewPayment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            app:timeout="500"
+            app:texts="@array/paymentFadingTextArray"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

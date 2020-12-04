@@ -10,4 +10,12 @@
         <item>Leaking Nuclear Codes</item>
     </string-array>
 
+    <string-array name="paymentFadingTextArray">
+        <item>Fetching Student Id</item>
+        <item>Fetching Payment Details</item>
+        <item>Serializing Payment</item>
+        <item>Updating Profile</item>
+        <item>Updating DataBase</item>
+    </string-array>
+
 </resources>

@@ -3,6 +3,7 @@ package com.example.t_commerce.adaptor;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,7 +68,6 @@ public class StudentListAdaptor extends RecyclerView.Adapter<StudentListAdaptor.
                 Animation a = AnimationUtils.loadAnimation(context,R.anim.bouncefab);
                 holder.whatsAppBtn.startAnimation(a);
 
-                //TODO: intent to whatsApp
 
                 String url = "https://api.whatsapp.com/send?phone=91"+whatsAppNumber.trim();
                 Intent i = new Intent(Intent.ACTION_VIEW);
@@ -81,8 +81,6 @@ public class StudentListAdaptor extends RecyclerView.Adapter<StudentListAdaptor.
             public void onClick(View v) {
                 Animation a = AnimationUtils.loadAnimation(context,R.anim.bouncefab);
                 holder.contactBtn.startAnimation(a);
-
-                //TODO: intent to contact
 
                 String uri = "tel:" + contactNumber.trim();
                 Intent intent = new Intent(Intent.ACTION_DIAL);
@@ -102,6 +100,17 @@ public class StudentListAdaptor extends RecyclerView.Adapter<StudentListAdaptor.
         this.onClickListener = clickListener;
     }
 
+
+    public StudentDetails getItemAt(int position)
+    {
+        return studentDetails.get(position);
+    }
+
+    public void updateList(ArrayList<StudentDetails> filteredList)
+    {
+        this.studentDetails = filteredList;
+        notifyDataSetChanged();
+    }
 
 
     @Override
