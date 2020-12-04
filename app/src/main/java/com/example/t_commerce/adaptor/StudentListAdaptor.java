@@ -20,10 +20,11 @@ import com.example.t_commerce.models.StudentDetails;
 
 import java.util.ArrayList;
 
-public class StudentListAdaptor extends RecyclerView.Adapter<StudentListAdaptor.MyViewHolder> {
+public class StudentListAdaptor extends RecyclerView.Adapter<StudentListAdaptor.MyViewHolder> implements View.OnClickListener {
 
     Context context;
     ArrayList<StudentDetails> studentDetails;
+    View.OnClickListener onClickListener;
 
     public StudentListAdaptor(Context c, ArrayList<StudentDetails> s)
     {
@@ -34,7 +35,10 @@ public class StudentListAdaptor extends RecyclerView.Adapter<StudentListAdaptor.
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.student_listitem_layout,parent,false));
+        LayoutInflater layoutInflater =  LayoutInflater.from(parent.getContext());
+        View studentItem = layoutInflater.inflate(R.layout.student_listitem_layout,parent,false);
+        studentItem.setOnClickListener(this);
+        return new MyViewHolder(studentItem);
     }
 
     @Override
@@ -93,7 +97,19 @@ public class StudentListAdaptor extends RecyclerView.Adapter<StudentListAdaptor.
         return studentDetails.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public void onClickListener(View.OnClickListener clickListener)
+    {
+        this.onClickListener = clickListener;
+    }
+
+
+
+    @Override
+    public void onClick(View v) {
+        onClickListener.onClick(v);
+    }
+
+    public static class MyViewHolder extends RecyclerView.ViewHolder{
 
         TextView standardText, nameText, schoolText;
         ImageButton whatsAppBtn, contactBtn;

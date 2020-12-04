@@ -16,6 +16,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.t_commerce.R;
 import com.example.t_commerce.adaptor.StandardListAdaptor;
@@ -48,6 +49,7 @@ public class StudentDiaryActivity extends AppCompatActivity {
     private SwitchMaterial cbseSwitch, icseSwitch, sscSwitch;
     private SwipeRefreshLayout swipeRefreshLayout;
     private StandardListAdaptor adaptor;
+    private StudentListAdaptor studentListAdaptor;
 
     FirebaseFirestore db;
 
@@ -152,6 +154,14 @@ public class StudentDiaryActivity extends AppCompatActivity {
             }
         });
 
+        studentListAdaptor.onClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = recyclerViewStudents.getChildAdapterPosition(v);
+                Toast.makeText(StudentDiaryActivity.this, String.valueOf(position), Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     public void loadAnimations()
@@ -181,7 +191,7 @@ public class StudentDiaryActivity extends AppCompatActivity {
 
     public void studentListCreation(ArrayList<StudentDetails> detail)
     {
-        StudentListAdaptor studentListAdaptor = new StudentListAdaptor(this,detail);
+        studentListAdaptor = new StudentListAdaptor(this,detail);
         recyclerViewStudents.setAdapter(studentListAdaptor);
         studentListAdaptor.notifyDataSetChanged();
     }
