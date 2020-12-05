@@ -280,11 +280,11 @@ public class StudentDiaryActivity extends AppCompatActivity {
                                 ArrayList<HashMap<String,Object>> k = (ArrayList<HashMap<String, Object>>) documentSnapshot.get(KEY_PAYMENT);
                                 for(HashMap<String,Object> element : k)
                                 {
-                                    Long Amount = (Long) element.get("Amount");
-                                    Timestamp timestamp = (Timestamp) element.get("Date");
+                                    Long Amount = (Long) element.get("amount");
+                                    Timestamp timestamp = (Timestamp) element.get("date");
                                     assert timestamp != null;
                                     Date date = timestamp.toDate();
-                                    String Mode = (String) element.get("Mode");
+                                    String Mode = (String) element.get("mode");
                                     PaymentHistory p = new PaymentHistory(date,Amount,Mode);
                                     histories.add(p);
                                 }

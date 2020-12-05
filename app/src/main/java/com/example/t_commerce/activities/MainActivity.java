@@ -167,27 +167,20 @@ public class MainActivity extends AppCompatActivity {
                                 ArrayList<HashMap<String,Object>> k = (ArrayList<HashMap<String, Object>>) documentSnapshot.get(KEY_PAYMENT);
                                 for(HashMap<String,Object> element : k)
                                 {
-                                    Long Amount = (Long) element.get("Amount");
-                                    Timestamp timestamp = (Timestamp) element.get("Date");
+                                    Long Amount = (Long) element.get("amount");
+                                    Timestamp timestamp = (Timestamp) element.get("date");
                                     assert timestamp != null;
                                     Date date = timestamp.toDate();
-                                    String Mode = (String) element.get("Mode");
+                                    String Mode = (String) element.get("mode");
                                     PaymentHistory p = new PaymentHistory(date,Amount,Mode);
                                     histories.add(p);
                                 }
 
                                 Long Class = (Long) documentSnapshot.get(KEY_CLASS);
                                 Long amountDue = (Long) documentSnapshot.get(KEY_AMTDUE);
+                                Log.i("????????????????",String.valueOf(amountDue));
                                 Long fees = (Long) documentSnapshot.get(KEY_FEES);
                                 String board = (String) documentSnapshot.get(KEY_BOARD);
-                                if(board == null)
-                                {
-                                    Log.i("NULL", "BOARD");
-                                }
-                                else
-                                {
-                                    Log.i("NOT NULL", "BOARD");
-                                }
                                 StudentDetails details = new StudentDetails(id,name,parentname,contact,whatsapp,amountDue,fees,
                                         Class,school,board,histories);
                                 Students.add(details);
@@ -229,15 +222,11 @@ public class MainActivity extends AppCompatActivity {
         int totalAmountDue = 0;
         for(int i = 0 ; i < Students.size(); i++)
         {
-            Log.i("STUDENTS",Students.get(i).getBoard());
             if(Students.get(i).getBoard().toLowerCase().equals("cbse")) cbseCount++;
             else if(Students.get(i).getBoard().toLowerCase().equals("ssc")) sscCount++;
             else  if (Students.get(i).getBoard().toLowerCase().equals("icsc")) icseCount++;
 
-            for(int j = 0; j < Students.get(i).getPayments().size(); j++)
-            {
-                totalAmountDue += Students.get(i).getPayments().get(j).getAmount();
-            }
+            totalAmountDue += Students.get(i).getAmountDue();
         }
 
         textView.setText(String.valueOf(totalAmountDue));
