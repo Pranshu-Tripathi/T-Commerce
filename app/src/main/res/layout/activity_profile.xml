@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/charcoal"
+    tools:context=".activities.ProfileActivity">
+
+    <include
+        android:id="@+id/toolbarProfile"
+        layout="@layout/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbarProfile">
+        <LinearLayout
+            android:layout_marginTop="@dimen/_50sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/_10sdp"
+                >
+
+                <ImageView
+                    android:layout_width="@dimen/_110sdp"
+                    android:layout_height="@dimen/_110sdp"
+                    android:background="@drawable/bg_standard"
+                    android:src="@drawable/ic_baseline_person_24" />
+
+                <LinearLayout
+                    android:paddingStart="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/profileName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Aditi Tripathi"
+                            android:textColor="@color/golden"
+                            android:textSize="@dimen/_26ssp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/profileSchool"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nashik Cambridge School"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_14ssp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Standard : "
+                            android:textColor="@color/silver"
+                            android:textSize="@dimen/_14ssp"/>
+                        <TextView
+                            android:id="@+id/profileClass"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="7th"
+                            android:textSize="@dimen/_14ssp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Fees Paying : "
+                            android:textColor="@color/silver"
+                            android:textSize="@dimen/_14ssp"/>
+                        <TextView
+                            android:id="@+id/profileFees"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="1500"
+                            android:textSize="@dimen/_14ssp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Amount Due :"
+                            android:textColor="@color/silver"
+                            android:textSize="@dimen/_14ssp"/>
+                        <TextView
+                            android:id="@+id/profileAmtDue"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="3000"
+                            android:textSize="@dimen/_14ssp"
+                            android:textStyle="bold"
+                            android:textColor="@color/red"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:padding="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Parent : "
+                        android:textColor="@color/silver"
+                        android:textSize="@dimen/_14ssp"/>
+                    <TextView
+                        android:id="@+id/profileParent"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Himanshu Tripathi"
+                        android:textSize="@dimen/_14ssp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Board :  "
+                        android:textColor="@color/silver"
+                        android:textSize="@dimen/_14ssp"/>
+                    <TextView
+                        android:id="@+id/profileBoard"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="C.B.S.C"
+                        android:textSize="@dimen/_14ssp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_weight="1"
+                        android:background="@color/charcoal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <androidx.cardview.widget.CardView
+                            android:layout_centerInParent="true"
+                            app:cardCornerRadius="@dimen/_20sdp"
+                            app:cardBackgroundColor="@color/golden"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:id="@+id/profileWhatsApp"
+                                android:background="?android:selectableItemBackground"
+                                android:padding="@dimen/_5sdp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <ImageView
+                                    android:background="@color/golden"
+                                    android:layout_width="@dimen/_35sdp"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/whatsapplogogreen"/>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="9373644999"
+                                    android:textColor="@color/boldBlack"
+                                    android:layout_gravity="center"
+                                    android:textSize="@dimen/_14ssp"/>
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/charcoal">
+                        <androidx.cardview.widget.CardView
+                            android:layout_centerInParent="true"
+                            app:cardCornerRadius="@dimen/_20sdp"
+                            app:cardBackgroundColor="@color/golden"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:id="@+id/profileContact"
+                                android:padding="@dimen/_5sdp"
+                                android:background="?android:selectableItemBackground"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <ImageView
+                                    android:background="@color/golden"
+                                    android:layout_width="@dimen/_35sdp"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/ic_baseline_phone_24"/>
+
+                                <TextView
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="9373902008"
+                                    android:textColor="@color/boldBlack"
+                                    android:layout_gravity="center"
+                                    android:textSize="@dimen/_14ssp"/>
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/downloadPdf"
+                android:padding="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAllCaps="false"
+                android:background="@drawable/bg_downloads"
+                android:text="Download Payments.pdf"
+                android:textColor="@color/golden"
+                />
+
+            <LinearLayout
+                android:background="@drawable/bg_student_addition"
+                android:padding="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_600sdp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewPaymentHistory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

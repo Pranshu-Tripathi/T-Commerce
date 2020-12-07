@@ -232,8 +232,6 @@ public class PaymentActivity extends AppCompatActivity {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            Log.i("?>?>?>?>?>?>?>",s);
-            Log.i("?>?>?>?>?>?>?>",date.toString());
             newPayment = new PaymentHistory(date,Amount,Mode);
             paymentDetails.add(newPayment);
             selectedStudent.setPayments(paymentDetails);

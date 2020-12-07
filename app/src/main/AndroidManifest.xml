@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-        <activity android:name=".activities.PaymentActivity"></activity>
+        <activity android:name=".activities.ProfileActivity"></activity>
+        <activity android:name=".activities.PaymentActivity" />
         <activity android:name=".activities.AddStudentActivity" />
         <activity android:name=".activities.StudentDiaryActivity" />
         <activity android:name=".activities.SplashScreen">

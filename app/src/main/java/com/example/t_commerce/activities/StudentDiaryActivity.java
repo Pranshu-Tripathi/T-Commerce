@@ -231,7 +231,9 @@ public class StudentDiaryActivity extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(StudentDiaryActivity.this,ProfileActivity.class);
+                intent.putExtra("selectedStudent",selectedStudent.getId());
+                startActivity(intent);
             }
         });
 

@@ -25,6 +25,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.Timestamp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -33,8 +38,10 @@ import com.tomer.fadingtextview.FadingTextView;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Objects;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -57,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton fab;
     private Button studentDiary, timeTable;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private Calendar mCalendar;
+    private DatabaseReference reference;
 
     private String[] texts = {"Gathering Resources",
             "Checking All the Dates",
@@ -79,8 +88,38 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar mTool = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mTool);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("T-Commerce");
+
+        reference = FirebaseDatabase.getInstance().getReference();
+
+
+//        mCalendar = Calendar.getInstance();
+//        Log.i("><>>><><",String.valueOf(mCalendar.get(Calendar.DAY_OF_MONTH)));
+//        Log.i("<><><><><><",String.valueOf(mCalendar.get(Calendar.HOUR_OF_DAY)));
+//        if(mCalendar.get(Calendar.DAY_OF_MONTH) == 7 && mCalendar.get(Calendar.HOUR_OF_DAY) == 19)
+//        {
+//            Toast.makeText(this, "TRUE!", Toast.LENGTH_SHORT).show();
+//            reference.addListenerForSingleValueEvent(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                    String month = Objects.requireNonNull(snapshot.child("month").getValue()).toString();
+//                    String year = snapshot.child("year").getValue().toString();
+//                    int mon = Integer.parseInt(month);
+//                    int yea = Integer.parseInt(year);
+//
+//                    callDatabase(mon,yea);
+//
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError error) {
+//
+//                }
+//            });
+//
+//        }
+
 
         avl = findViewById(R.id.avi);
         avl.show();
@@ -268,4 +307,28 @@ public class MainActivity extends AppCompatActivity {
         MenuItem searchViewItem = menu.findItem(R.id.app_bar_search);
         return super.onCreateOptionsMenu(menu);
     }
+
+//    private void callDatabase(int mon , int yea)
+//    {
+//        Log.i("??????????????????",String.valueOf(mon));
+//        if(mon < mCalendar.get(Calendar.MONTH) || yea < mCalendar.get(Calendar.YEAR));
+//        {
+//            Toast.makeText(MainActivity.this, "callDatabase", Toast.LENGTH_SHORT).show();
+//            reference.addListenerForSingleValueEvent(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                    snapshot.getRef().child("updateFees").setValue("true");
+//                    snapshot.getRef().child("month").setValue(mCalendar.get(Calendar.MONTH));
+//                    snapshot.getRef().child("year").setValue(mCalendar.get(Calendar.YEAR));
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError error) {
+//
+//                }
+//            });
+//        }
+//
+//    }
+
 }

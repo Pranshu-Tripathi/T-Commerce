@@ -98,7 +98,7 @@
                         android:background="@color/charcoal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_baseline_phone_24"/>
+                        android:src="@drawable/ic_baseline_phone_golden"/>
                 </LinearLayout>
 
             </LinearLayout>
