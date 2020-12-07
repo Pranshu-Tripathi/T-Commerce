@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -30,9 +31,12 @@ import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.type.DateTime;
 import com.tomer.fadingtextview.FadingTextView;
 import com.wang.avi.AVLoadingIndicatorView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -67,7 +71,8 @@ public class PaymentActivity extends AppCompatActivity {
     private SwitchMaterial switchMaterial;
     private Calendar mCurrentDateTime;
     private Date selectedDate;
-    private int cur_date,cur_month,cur_year,hour,min;
+    private int cur_date,cur_month,cur_year,cur_hour,cur_min;
+    private int sel_date,sel_month,sel_year,sel_hour,sel_min;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,8 +82,8 @@ public class PaymentActivity extends AppCompatActivity {
         cur_date = mCurrentDateTime.get(Calendar.DAY_OF_MONTH);
         cur_month = mCurrentDateTime.get(Calendar.MONTH);
         cur_year = mCurrentDateTime.get(Calendar.YEAR);
-        hour = mCurrentDateTime.get(Calendar.HOUR_OF_DAY);
-        min = mCurrentDateTime.get(Calendar.MINUTE);
+        cur_hour = mCurrentDateTime.get(Calendar.HOUR_OF_DAY);
+        cur_min = mCurrentDateTime.get(Calendar.MINUTE);
         selectedDate = new Date();
 
         Log.i("Date",String.valueOf(cur_date));
@@ -215,7 +220,21 @@ public class PaymentActivity extends AppCompatActivity {
             String Mode = displayMode.getText().toString();
             PaymentHistory newPayment = null;
 
-            newPayment = new PaymentHistory(selectedDate,Amount,Mode);
+            String s = dateText.getText().toString();
+            s += 'T';
+            s += timeText.getText().toString();
+            s += 'Z';
+            Date date = new Date();
+            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy'T'HH:mm'Z'");
+            try {
+                date = format.parse(s);
+                System.out.println(date);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            Log.i("?>?>?>?>?>?>?>",s);
+            Log.i("?>?>?>?>?>?>?>",date.toString());
+            newPayment = new PaymentHistory(date,Amount,Mode);
             paymentDetails.add(newPayment);
             selectedStudent.setPayments(paymentDetails);
 
@@ -286,6 +305,10 @@ public class PaymentActivity extends AppCompatActivity {
                 selectedDate.setYear(year);
                 selectedDate.setYear(2020);
 
+                sel_date = dayOfMonth;
+                sel_month = month;
+                sel_year = year;
+
                 String dateString = "";
                 String monthString = "";
 
@@ -299,7 +322,7 @@ public class PaymentActivity extends AppCompatActivity {
                 else
                     monthString+= String.valueOf(selectedDate.getMonth()+1);
 
-                String s = dateString + " / " + monthString+ " / " + String.valueOf(selectedDate.getYear());
+                String s = dateString + "/" + monthString+ "/" + String.valueOf(selectedDate.getYear());
                 dateText.setText(s);
 
             }
@@ -317,6 +340,9 @@ public class PaymentActivity extends AppCompatActivity {
                 String hourString = "";
                 String minString = "";
 
+                sel_hour = hourOfDay;
+                sel_min = minute;
+
                 Log.i("SELECTED DATE",selectedDate.toString());
 
                 if(selectedDate.getHours() < 9)
@@ -328,10 +354,10 @@ public class PaymentActivity extends AppCompatActivity {
                 else
                     minString += selectedDate.getMinutes();
 
-                String s = hourString + " : " + minString;
+                String s = hourString + ":" + minString;
                 timeText.setText(s);
             }
-        },hour,min,false);
+        },cur_hour,cur_min,false);
         dialog.show();
     }
 
